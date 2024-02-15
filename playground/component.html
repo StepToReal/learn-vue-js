@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <app-header></app-header> 
+        <app-footer></app-footer>        
+    </div>
+              
+    <div id="app2">
+        <app-header></app-header> 
+        <app-footer></app-footer>  
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        //Vue.component 는 전역 컴포넌트라고 함, 실제 개발 시에는 크게 사용되지 않음
+        Vue.component('app-header', {
+            template: '<h1>Header</h1>'
+        });
+
+        new Vue({ //처음 Vue 를 생성하면 이게 root content 가 된다.
+            el: '#app',
+            // 지역 컴포넌트 등록 방식
+            components: {
+                'app-footer': {
+                    template: '<footer>footer</footer>'
+                }
+            }
+        });
+
+        new Vue({
+            el: '#app2',
+            components: {
+                'app-footer': {
+                    template: '<footer>footer2</footer>'
+                }
+            }
+        });
+    </script>
+</body>
+</html>
